@@ -1,0 +1,23 @@
+---
+##############################################################################
+# trajectory 0 vs trajectory 2
+
+path2ref:  data/traj_2/images/OverFeat_features/
+path2qu:   data/traj_0/images/OverFeat_features/
+simPlaces: data/traj_2/vggSim.txt
+querySize: 398
+expansionRate: 0.7
+fanOut: 5
+nonMatchCost: 3.7
+# hashing / relocalization
+hashTable: data/traj_2/overfeat_hash.txt
+
+costMatrix: data/overfeat_costs_0_vs_2.txt
+
+# optional param for visualizing the last match with images (optional)
+path2refImg:  data/traj_2/images/
+path2quImg:  data/traj_0/images/
+imgExt: .jpg
+
+# speeding up matching
+bufferSize: 100

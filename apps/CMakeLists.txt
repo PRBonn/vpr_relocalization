@@ -1,0 +1,6 @@
+add_subdirectory(create_cost_matrix)
+add_subdirectory(estimate_non_match_cost)
+add_subdirectory(feature_based_matching)
+add_subdirectory(cost_matrix_based_matching)
+add_subdirectory(estimate_similar_places)
+add_subdirectory(hash_features)

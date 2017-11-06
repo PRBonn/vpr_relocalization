@@ -1,0 +1,9 @@
+add_library(online_localizer 
+	online_localizer.cpp 
+	path_element.cpp
+)
+target_link_libraries(online_localizer
+	successor_manager
+	node
+	timer
+)

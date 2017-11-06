@@ -1,0 +1,4 @@
+--- 
+path2ref: < your path to reference features >
+path2qu: < your path to query features>
+costOutputName: <your output name for file with costs>

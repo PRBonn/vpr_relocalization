@@ -1,0 +1,3 @@
+/home/olga/Data/test_online_place_recogntion/nordland_network/summer_features/image-000004-feature.txt /home/olga/Data/test_online_place_recogntion/nordland_network/winter_features/image-000054-feature.txt
+/home/olga/Data/test_online_place_recogntion/nordland_network/summer_features/image-000100-feature.txt /home/olga/Data/test_online_place_recogntion/nordland_network/winter_features/image-000500-feature.txt
+/home/olga/Data/test_online_place_recogntion/nordland_network/summer_features/image-000450-feature.txt /home/olga/Data/test_online_place_recogntion/nordland_network/winter_features/image-000300-feature.txt
