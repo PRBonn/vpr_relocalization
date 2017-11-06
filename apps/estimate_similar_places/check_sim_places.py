@@ -8,7 +8,6 @@ import cv2
 # path_to_folder, path where the estimated similar places binary has outputted
 # the simPlaces and computed scores
 path2folder = "<path_to_folder>"
-# path2folder = "/home/olga/projects/online_place_recognition/build/"
 simPlaces = path2folder + "vggSim.txt"
 costs = path2folder + "scores.txt"
 traj_size = 1078
