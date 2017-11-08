@@ -8,8 +8,9 @@ In this framework, the system is able to deal with trajectories of arbitrary sha
 * by performing relocalization step, whenever the robot is considered lost, e.g. the query trajectory deviates from the reference one.
 * by taking into account the information about the similar places within reference trajectory to ensure the multiple localization hypothesis.
 
-[image sequences from different routes and weather conditions](../doc/pics/motiv.png)
-In Figure the images from the blue trajectory are matched against the images of orange trajectory. Blue trajectory (query) follows partially the orange trajectory (reference) as well as deviating from it. These kinds of challenges in matching images sequences are targeted in this framework. 
+![image sequences from different routes and weather conditions](doc/pics/motiv.png)
+
+In Figure the images from the blue trajectory are matched against the images of orange trajectory. Blue trajectory (query) follows partially the orange trajectory (reference) as well as deviating from it. These kinds of challenges in matching images sequences are targeted in this framework. (Trajectories are plotted over Google Maps for visualization purposes. The GPS coordinates are not used for place recognition.)
 
 For more theoretical details, please refer to our paper [Relocalization under Substantial Appearance Changes using Hashing](http://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/vysotska2017irosws.pdf).
 
