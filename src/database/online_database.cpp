@@ -81,11 +81,9 @@ double OnlineDatabase::getCost(int quId, int refId) {
 }
 
 void OnlineDatabase::setQuFeaturesFolder(const std::string &path2folder) {
-  _quFeaturesFolder = path2folder;
   _quFeaturesNames = listDir(path2folder);
 }
 void OnlineDatabase::setRefFeaturesFolder(const std::string &path2folder) {
-  _refFeaturesFolder = path2folder;
   _refFeaturesNames = listDir(path2folder);
 }
 
@@ -121,7 +119,7 @@ double OnlineDatabase::computeMatchCost(int quId, int refId) {
   } else {
     // We cannot directly set const pointers, so set them through a proxy.
     auto tempFeaturePtr = _featureFactory.createFeature();
-    tempFeaturePtr->loadFromFile(_quFeaturesFolder + _quFeaturesNames[quId]);
+    tempFeaturePtr->loadFromFile( _quFeaturesNames[quId]);
     quFeaturePtr = tempFeaturePtr;
     _quBuff.addFeature(quId, quFeaturePtr);
   }
@@ -131,7 +129,7 @@ double OnlineDatabase::computeMatchCost(int quId, int refId) {
   } else {
     // We cannot directly set const pointers, so set them through a proxy.
     auto tempFeaturePtr = _featureFactory.createFeature();
-    tempFeaturePtr->loadFromFile(_refFeaturesFolder + _refFeaturesNames[refId]);
+    tempFeaturePtr->loadFromFile(_refFeaturesNames[refId]);
     refFeaturePtr = tempFeaturePtr;
     _refBuff.addFeature(refId, refFeaturePtr);
   }
@@ -163,7 +161,7 @@ iFeature::ConstPtr OnlineDatabase::getQueryFeature(int quId) {
   } else {
     // We cannot directly set const pointers, so set them through a proxy.
     auto tempFeaturePtr = _featureFactory.createFeature();
-    tempFeaturePtr->loadFromFile(_quFeaturesFolder + _quFeaturesNames[quId]);
+    tempFeaturePtr->loadFromFile(_quFeaturesNames[quId]);
     quFeaturePtr = tempFeaturePtr;
     _quBuff.addFeature(quId, quFeaturePtr);
   }

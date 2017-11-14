@@ -35,7 +35,7 @@ std::vector<std::string> listDir(const std::string &dir_name) {
     struct dirent *ent;
     /* print all the files and directories within directory */
     while ((ent = readdir(dir)) != NULL) {
-      file_names.push_back(ent->d_name);
+      file_names.push_back( dir_name + ent->d_name);
     }
     std::sort(file_names.begin(), file_names.end());
     closedir(dir);

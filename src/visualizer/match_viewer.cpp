@@ -1,25 +1,7 @@
-/** vpr_relocalization: a library for visual place recognition in changing 
-** environments with efficient relocalization step.
-** Copyright (c) 2017 O. Vysotska, C. Stachniss, University of Bonn
-**
-** Permission is hereby granted, free of charge, to any person obtaining a copy
-** of this software and associated documentation files (the "Software"), to deal
-** in the Software without restriction, including without limitation the rights
-** to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-** copies of the Software, and to permit persons to whom the Software is
-** furnished to do so, subject to the following conditions:
-**
-** The above copyright notice and this permission notice shall be included in
-** all copies or substantial portions of the Software.
-**
-** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-** IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-** FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-** AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-** LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-** OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-** SOFTWARE.
-**/
+/* Copyright Olga Vysotska, year 2017.
+** In case of any problems with the code please contact me.
+** Email: olga.vysotska@uni-bonn.de.
+*/
 
 #include "visualizer/match_viewer.h"
 
@@ -27,14 +9,15 @@
 #include <QScrollBar>
 #include <string>
 #include <vector>
+#include <database/list_dir.h>
 
 MatchViewer::MatchViewer() {}
 
 bool MatchViewer::init(int width, int height) {
-  // if (_queryImages.empty() || _refImages.empty()) {
-  //   printf("[ERROR][MatchViewer] Images were not set\n");
-  //   return false;
-  // }
+  if (_queryImages.empty() || _refImages.empty()) {
+    printf("[ERROR][MatchViewer] Images were not set\n");
+    return false;
+  }
   this->setDragMode(QGraphicsView::ScrollHandDrag);
   this->setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
   // this->setScene(&_scene);
@@ -102,12 +85,7 @@ void MatchViewer::wheelEvent(QWheelEvent *event) {
 void MatchViewer::receivedMatch(int quId, int refId, bool hidden) {
   // printf("Received match %d %d \n", quId, refId);
   std::string qu_path, ref_path;
-
-  qu_path = _database->getQuFeatureName(quId);
-  qu_path = _quImagesFolder + qu_path;
-  // chop out '-feature.txt' -> 12 symbols
-  qu_path.erase(qu_path.end() - 12, qu_path.end());
-  qu_path += _imgExt;
+  qu_path = _queryImages[quId];
 
   QPixmap img_qu;
   img_qu.load(qu_path.c_str());
@@ -132,11 +110,8 @@ void MatchViewer::receivedMatch(int quId, int refId, bool hidden) {
     _textItem->setZValue(1);
   } else {
     _textItem->setVisible(false);
-    ref_path = _database->getRefFeatureName(refId);
-    ref_path = _refImagesFolder + ref_path;
-    // chop out '-feature.txt' -> 12 symbols
-    ref_path.erase(ref_path.end() - 12, ref_path.end());
-    ref_path += _imgExt;
+
+    ref_path = _refImages[refId];
 
     QPixmap img_ref;
     // printf("[MatchViewer] reading image %s\n", ref_path.c_str());
@@ -158,11 +133,11 @@ bool MatchViewer::isReady() const {
     printf("[ERROR][MatchViewer] Database is not set\n");
     return false;
   }
-  if (_quImagesFolder.empty()) {
+  if (_queryImages.empty()) {
     printf("[ERROR][MatchViewer] Folder for query images is not set\n");
     return false;
   }
-  if (_refImagesFolder.empty()) {
+  if (_refImages.empty()) {
     printf("[ERROR][MatchViewer] Folder for reference images is not set\n");
     return false;
   }
@@ -174,10 +149,10 @@ bool MatchViewer::isReady() const {
   return true;
 }
 
-void MatchViewer::setQuImageDirectory(const std::string &folder) {
-  _quImagesFolder = folder;
+void MatchViewer::setQueryImages(const std::string &folder) {
+  _queryImages = listDir(folder);
 }
-void MatchViewer::setRefImageDirectory(const std::string &folder) {
-  _refImagesFolder = folder;
+void MatchViewer::setRefImages(const std::string &folder) {
+  _refImages = listDir(folder);
 }
 void MatchViewer::setImageExtension(const std::string &ext) { _imgExt = ext; }

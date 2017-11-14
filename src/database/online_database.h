@@ -75,8 +75,6 @@ class OnlineDatabase : public iDatabase {
 
  protected:
   MatchMap _matchMap;
-  std::string _quFeaturesFolder = "";
-  std::string _refFeaturesFolder = "";
   std::vector<std::string> _quFeaturesNames, _refFeaturesNames;
   FeatureFactory _featureFactory;
 

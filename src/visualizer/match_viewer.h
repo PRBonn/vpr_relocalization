@@ -1,25 +1,7 @@
-/** vpr_relocalization: a library for visual place recognition in changing 
-** environments with efficient relocalization step.
-** Copyright (c) 2017 O. Vysotska, C. Stachniss, University of Bonn
-**
-** Permission is hereby granted, free of charge, to any person obtaining a copy
-** of this software and associated documentation files (the "Software"), to deal
-** in the Software without restriction, including without limitation the rights
-** to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-** copies of the Software, and to permit persons to whom the Software is
-** furnished to do so, subject to the following conditions:
-**
-** The above copyright notice and this permission notice shall be included in
-** all copies or substantial portions of the Software.
-**
-** THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-** IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-** FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-** AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-** LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-** OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-** SOFTWARE.
-**/
+/* Copyright Olga Vysotska, year 2017.
+** In case of any problems with the code please contact me.
+** Email: olga.vysotska@uni-bonn.de.
+*/
 
 #ifndef SRC_VISUALIZER_MATCH_VIEWER_H_
 #define SRC_VISUALIZER_MATCH_VIEWER_H_
@@ -31,6 +13,7 @@
 #include <QGridLayout>
 #include <QtGui>
 #include <string>
+#include <vector>
 
 #include "database/online_database.h"
 #include "online_localizer/online_localizer.h"
@@ -47,10 +30,10 @@ class MatchViewer : public QGraphicsView {
 
   MatchViewer();
   ~MatchViewer();
-  
+
   bool setDatabase(OnlineDatabase::Ptr database);
-  void setQuImageDirectory(const std::string &folder);
-  void setRefImageDirectory(const std::string &folder);
+  void setQueryImages(const std::string &folder);
+  void setRefImages(const std::string &folder);
   void setImageExtension(const std::string &ext);
 
   bool isReady() const;
@@ -62,8 +45,8 @@ class MatchViewer : public QGraphicsView {
   void receivedMatch(int quId, int refId, bool hidden);
 
  private:
-  std::string _refImagesFolder = "";
-  std::string _quImagesFolder = "";
+  std::vector<std::string> _refImages;
+  std::vector<std::string> _queryImages;
   std::string _imgExt = "";
 
   // variable for storing two single images
