@@ -94,7 +94,7 @@ TEST(DimensionHashing, hashFeature) {
 
 //   for (size_t i = 0; i < featureNames.size(); ++i) {
 //     BinaryFeature::Ptr featurePtr = BinaryFeature::Ptr(new BinaryFeature);
-//     featurePtr->loadFromFile(path2folder + featureNames[i]);
+//     featurePtr->loadFromFile(featureNames[i]);
 //     featurePtr->binarize();
 //     featurePtrs.push_back(featurePtr);
 //     fprintf(stderr, ".");

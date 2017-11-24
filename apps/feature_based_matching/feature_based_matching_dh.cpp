@@ -88,8 +88,8 @@ int main(int argc, char *argv[]) {
       QApplication::translate("toplevel", "Olga's awesome viewer"));
 
   MatchViewer *matchViewer = new MatchViewer();
-  matchViewer->setQuImageDirectory(parser.path2quImg);
-  matchViewer->setRefImageDirectory(parser.path2refImg);
+  matchViewer->setQueryImages(parser.path2quImg);
+  matchViewer->setRefImages(parser.path2refImg);
   matchViewer->setImageExtension(parser.imgExt);
   matchViewer->setDatabase(onlineDatabasePtr);
 

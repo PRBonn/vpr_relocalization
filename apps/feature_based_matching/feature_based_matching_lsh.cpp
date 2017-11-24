@@ -57,7 +57,7 @@ std::vector<iBinarizableFeature::Ptr> loadFeatures(
         iBinarizableFeature::Ptr(new CnnFeatureMean);
     // [VGG] Uncomment this to use vgg features
     // iBinarizableFeature::Ptr(new VggFeatureMean);
-    featurePtr->loadFromFile(path2folder + featureNames[i]);
+    featurePtr->loadFromFile(featureNames[i]);
     featurePtrs.push_back(featurePtr);
     fprintf(stderr, ".");
   }
@@ -115,8 +115,8 @@ int main(int argc, char *argv[]) {
       QApplication::translate("toplevel", "Olga's awesome viewer"));
 
   MatchViewer *matchViewer = new MatchViewer();
-  matchViewer->setQuImageDirectory(parser.path2quImg);
-  matchViewer->setRefImageDirectory(parser.path2refImg);
+  matchViewer->setQueryImages(parser.path2quImg);
+  matchViewer->setRefImages(parser.path2refImg);
   matchViewer->setImageExtension(parser.imgExt);
   matchViewer->setDatabase(onlineDatabasePtr);
 

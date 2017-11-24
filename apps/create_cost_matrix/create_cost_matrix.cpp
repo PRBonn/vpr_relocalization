@@ -44,7 +44,7 @@ FeatureBuffer loadFeatures(const std::string &path2folder,
   printf("Loading features\n");
   for (size_t i = 0; i < featureNames.size(); ++i) {
     iFeature::Ptr featurePtr = factory.createFeature();
-    featurePtr->loadFromFile(path2folder + featureNames[i]);
+    featurePtr->loadFromFile(featureNames[i]);
     buffer.addFeature(i, featurePtr);
     fprintf(stderr, ".");
   }

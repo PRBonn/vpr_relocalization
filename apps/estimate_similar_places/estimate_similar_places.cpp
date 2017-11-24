@@ -45,7 +45,7 @@ std::vector<iBinarizableFeature::Ptr> readFeatures(
     iBinarizableFeature::Ptr featurePtr =
         // iBinarizableFeature::Ptr(new CnnFeatureMean);
         iBinarizableFeature::Ptr(new VggFeatureMean);
-    featurePtr->loadFromFile(path2folder + featureNames[i]);
+    featurePtr->loadFromFile(featureNames[i]);
     v.push_back(featurePtr);
     std::cerr << ".";
   }

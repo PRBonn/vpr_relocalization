@@ -40,7 +40,7 @@ void hashDimensions(const std::string &path2folder,
     iBinarizableFeature::Ptr featurePtr =
         iBinarizableFeature::Ptr(new CnnFeature);
         // iBinarizableFeature::Ptr(new VggFeature);
-    featurePtr->loadFromFile(path2folder + featureNames[i]);
+    featurePtr->loadFromFile(featureNames[i]);
     featurePtrs.push_back(featurePtr);
     fprintf(stderr, ".");
   }

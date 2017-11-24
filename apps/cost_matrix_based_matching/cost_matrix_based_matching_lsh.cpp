@@ -52,7 +52,7 @@ std::vector<iBinarizableFeature::Ptr> loadFeatures(
         iBinarizableFeature::Ptr(new CnnFeature);
     // [VGG] Uncomment this to use vgg features
     // iBinarizableFeature::Ptr(new VggFeature);
-    featurePtr->loadFromFile(path2folder + featureNames[i]);
+    featurePtr->loadFromFile(featureNames[i]);
     featurePtrs.push_back(featurePtr);
     fprintf(stderr, ".");
   }
