@@ -26,7 +26,7 @@ For more theoretical details, please refer to our paper [Relocalization under Su
 
 
 ### Build
-The code is tested on Ubuntu 16.04.
+The code is tested on Ubuntu 16.04 and 18.04.
 To build the project, run the following commands from the main directory:
 
 * `mkdir build`
