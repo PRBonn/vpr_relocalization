@@ -1,5 +1,7 @@
 # Visual place recognition using image sequences with Relocalization
 
+This project is **not maintained**. Please consider a newer version [image_sequence_localizer](https://github.com/ovysotska/image_sequence_localizer).
+
 ## What does this code do?
 Performs matching of two image sequences of arbitrary shaped trajectories, e.g. the query trajectory may deviate from reference one. This work is an extension of our work on image sequence matching under changing visual appearances. The previous approach was dealing well with trajectories that roughly follows the same route. You can find the code by following this link [online place recognition](https://github.com/Photogrammetry-Robotics-Bonn/online_place_recognition).
 
